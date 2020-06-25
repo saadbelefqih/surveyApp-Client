@@ -1,0 +1,75 @@
+<h3 class="text-center">{{ligneQuest?.ligneQuestionnaire?.questionnaire?.intituleQuestionnaire}}</h3>
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 page-content">
+                <ul class="form-steps four clearfix">
+                    <li 
+                    *ngFor="let question of questions; let i=index"
+                    [ngClass]="i==currentQuestionPosition?'active':(currentQuestionPosition > i ? 'completed' : '')">
+                    Question: {{i+1}}</li>
+                </ul>
+                <div class="white-container sign-up-form">
+                    <div>
+                        <section *ngIf="isFinish" class="alert alert-warning">
+                            <h6 class="bottom-line text-success">Merci pour votre participation</h6>
+                            <p>Veuillez-vous vérifier vos réponses avant la validation</p>
+                        </section>
+                        <section *ngIf="!isFinish">
+                            <h6 class="bottom-line">{{currentQuestion?.textQuestion}}</h6>
+
+                            <div class="radio-inline col-12" *ngIf="currentQuestion?.option1">
+                                <label><input type="checkbox"
+                                    [disabled]="option2 || option3 || option4" 
+                                    [checked]="option1"   
+                                    (change)="option1 = !option1">
+                                    {{currentQuestion?.option1}}</label>
+                            </div>
+
+                            <div class="radio-inline col-12" *ngIf="currentQuestion?.option2">
+                                <label><input type="checkbox" 
+                                    [disabled]="option1 || option3 || option4" 
+                                    [checked]="option2" 
+                                    (change)="option2 = !option2">
+                                     {{currentQuestion?.option2}}</label>
+                            </div>
+
+                            <div class="radio-inline col-12" *ngIf="currentQuestion?.option3">
+                                <label><input type="checkbox" 
+                                    [disabled]="option1 || option2 || option4"
+                                    [checked]="option3"  
+                                    (change)="option3 = !option3"> 
+                                    {{currentQuestion?.option3}}</label>
+                            </div>
+
+                            <div class="radio-inline col-12" *ngIf="currentQuestion?.option4">
+                                <label><input type="checkbox" 
+                                    [disabled]="option1 || option2 || option3"
+                                    [checked]="option4"  
+                                    (change)="option4 = !option4"> {{currentQuestion?.option4}}</label>
+                            </div>
+                        </section>
+                    </div>
+                    <hr class="mt60">
+                    <div class="clearfix">
+                        <a  *ngIf="currentQuestionPosition!=0"
+                        (click)="onGetPrecedentQuestion()" 
+                        class="btn btn-default btn-large pull-left">Précédent </a>
+                        <a  *ngIf="questions.length>(currentQuestionPosition+1)"
+                            (click)="onGetNextQuestion(currentQuestionPosition+1)"
+                            [ngClass]="!option1 && !option2 && !option3 && !option4?'disabled':''"
+                            class="btn btn-default btn-large pull-right ">Question {{ (currentQuestionPosition)+2 }} </a>
+                        <a  *ngIf="questions.length==(currentQuestionPosition+1)"
+                                (click)="onGetNextQuestion(currentQuestionPosition+1)"
+                                [ngClass]="!option1 && !option2 && !option3 && !option4?'disabled':''"
+                                class="btn btn-default btn-large pull-right ">Suivant</a>
+                        <a  *ngIf="currentQuestionPosition+1>questions.length" 
+                            (click)="onSaveAswer()"
+                            [ngClass]="!option1 && !option2 && !option3 && !option4?'disabled':''"
+                            class="btn btn-default btn-large pull-right">Valider & Envoyer </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

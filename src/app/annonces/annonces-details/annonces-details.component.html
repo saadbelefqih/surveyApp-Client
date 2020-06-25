@@ -1,0 +1,79 @@
+<div class="col-sm-4 page-sidebar">
+    <aside>
+        <div class="widget sidebar-widget white-container candidates-single-widget">
+            <div class="widget-content">
+                <div id="jobs-single-page-map" class="white-container">
+                    <img src="./assets/img/annoncesDetails.jpg">
+                </div>
+                <h5 class="bottom-line">Détails Annonce</h5>
+                <table>
+                    <tbody>
+
+                        <tr>
+                            <td>Dernier date de participation:</td>
+                            <td>{{annonce?.dateFinPublication | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+                        <tr>
+                            <td>Date lancement des travaux</td>
+                            <td>{{annonce?.dateDebutTravail | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Date d'achèvement des travaux</td>
+                            <td>{{annonce?.dateFinPublication | date:'dd-MM-yyyy'}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Nombre participant demandé</td>
+                            <td>{{annonce?.nbParticipantDemander}}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aside>
+</div> <!-- end .page-sidebar -->
+
+<div class="col-sm-8 page-content">
+    <div class="clearfix mb30 hidden-xs">
+        <a [routerLink]="['/annonces']" class="btn btn-gray pull-left">Retour aux annonces</a>
+    </div>
+
+    <div class="jobs-item jobs-single-item">
+        <div class="clearfix visible-xs"></div>
+        <div class="date">{{annonce?.dateDebutPublication | date:'dd'}} <span>{{annonce?.dateDebutPublication | date:'yyyy-MM'}}</span></div>
+        <h6 class="title">{{annonce?.libelle}}</h6>
+        <p class="text-justify text-capitalize">{{annonce?.detail}}.</p>
+        <ul class="list-unstyled">
+            <li><strong>Date Publication:</strong> </li>
+            <li><strong>Dernier date de participation:</strong> {{annonce?.dateFinPublication | date:'dd-MM-yyyy'}}</li>
+        </ul>
+
+        <div class="fitvidsjs">
+            <youtube-player 
+                videoId="SgZ7pVb_lb0&list=RD8_peZd1cArw&index=5" 
+                suggestedQuality="highres" 
+                [height]="281" 
+                [width]="500" 
+                [startSeconds]="'4'"
+                [endSeconds]="8">
+                </youtube-player>
+        </div>
+
+        <h5>public Cible</h5>
+
+        <ul *ngFor="let pc of annonce?.publicsCible" class="additional-requirements clearfix" >
+            <li >{{pc.libelle}}</li>
+        </ul>
+
+        <hr>
+
+        <div class="clearfix">
+            <a (click)="onPost()" class="btn btn-default pull-left">Poster une demande de Candidature</a>
+        </div>
+    </div>
+
+
+
+</div> <!-- end .page-content -->

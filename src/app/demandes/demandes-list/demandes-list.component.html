@@ -1,0 +1,21 @@
+<h6>Demandes {{typeDemande}}</h6>
+<div  *ngIf="demandes">
+    
+    <table datatable class="table hover stripe"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
+        <thead>
+          <tr>
+            <th style="width:10%">#</th>
+            <th style="width:75%">Annonce</th>
+            <th style="width:15%">Date Demande</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let demande of demandes; let i = index">
+            <td>{{i+1}}</td>
+            <td> <a (click)="onRedirect(demande?.annonce?.id)">{{demande?.annonce?.libelle}}</a></td>
+            <td>{{demande?.dateDemande | date:'dd-MM-yyyy'}}</td>
+          </tr>
+        </tbody>
+    </table>    
+
+</div>

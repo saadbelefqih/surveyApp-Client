@@ -1,0 +1,25 @@
+<h6>Questionnaires {{typeQuestionnaire}}</h6>
+<div  *ngIf="questionnaires">
+    
+    <table datatable class="table hover stripe display"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
+        <thead>
+          <tr>
+            <th style="width:2%">#</th>
+            <th style="width:40%">Annonce</th>
+            <th style="width:40%">Questionnaire</th>
+            <th style="width:13%"><span style="font-size: 14px;">Date fin Réponse</span></th>
+            <th style="width:5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let questionnaire of questionnaires; let i = index">
+            <td>{{i+1}}</td>
+            <td> <a (click)="onRedirectAnnonce(questionnaire?.demande?.annonce?.id)">{{ (questionnaire?.demande?.annonce?.libelle.length>70)? (questionnaire?.demande?.annonce?.libelle | slice:0:70)+'..':(questionnaire?.demande?.annonce?.libelle) }}</a></td>
+            <td>{{ (questionnaire?.ligneQuestionnaire?.questionnaire?.intituleQuestionnaire.length>70)? (questionnaire?.ligneQuestionnaire?.questionnaire?.intituleQuestionnaire | slice:0:70)+'..':(questionnaire?.ligneQuestionnaire?.questionnaire?.intituleQuestionnaire) }}</td> 
+            <td>{{questionnaire?.ligneQuestionnaire?.dateFinReponse | date:'dd-MM-yyyy'}}</td>
+            <td><a (click)="onRedirectQuestionnaire(questionnaire)"><i class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i></a></td>
+          </tr>
+        </tbody>
+    </table>    
+    
+</div>

@@ -1,0 +1,58 @@
+
+<div class="header-nav-bar">
+    <div class="container">
+
+        <!-- Logo -->
+        <div class="css-table logo">
+            <div class="css-table-cell">
+                <a href="index.html">
+                    <img src="./assets/img/header-logo.png" alt="">
+                </a> <!-- end .logo -->
+            </div>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <a href="#" id="mobile-menu-toggle"><span></span></a>
+
+        <!-- Primary Nav -->
+        <nav>
+            <ul class="primary-nav">
+                <li routerLinkActive="active">
+                    <a routerLink="/">Home</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a routerLink="/annonces">Annonces</a>
+                </li>
+                <li *ngIf="isUserLoggedIn" class="has-submenu">
+                    <a routerLinkActive="active">Mes questionnaires</a>
+                    <ul>
+                        <li><a routerLinkActive="active" [routerLink]="['/questionnaires','EnAttente']">questionnaires a répondre</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/questionnaires','Repondus']">questionnaires répondus</a></li>
+                    </ul>
+                </li>
+                <li *ngIf="isUserLoggedIn" class="has-submenu">
+                    <a routerLinkActive="active">Mes Demandes</a>
+                    <ul>
+                        <li><a routerLinkActive="active" [routerLink]="['/demandes','acceptedDmD']">Demandes acceptées</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/demandes','pendingDmD']">Demandes en attentes</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['/demandes','rejectedDmD']">Demande refusées</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="about-us.html">About Us</a>
+                    <ul>
+                        <li><a href="partners.html">Partners</a></li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="shortcodes.html">Shortcodes</a></li>
+            </ul>
+        </nav>
+    </div> <!-- end .container -->
+
+    <div id="mobile-menu-container" class="container">
+        <div class="login-register"></div>
+        <div class="menu"></div>
+    </div>
+</div> <!-- end .header-nav-bar -->
