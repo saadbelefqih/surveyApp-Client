@@ -1,0 +1,14 @@
+
+  .btn-brown{
+    padding-bottom: 3px;
+    border-bottom: 2px solid #AB320F;
+    background: #E29263;
+    color: #ffffff;
+  }
+
+  .btn-brown:hover, .btn-brown:focus, .btn-brown:active, .btn-brown.active {
+    outline: 0;
+    border-color: #E29263;
+    background-color: #AB320F;
+    color: #ffffff;
+  }

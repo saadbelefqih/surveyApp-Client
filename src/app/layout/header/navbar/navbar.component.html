@@ -5,48 +5,36 @@
         <!-- Logo -->
         <div class="css-table logo">
             <div class="css-table-cell">
-                <a href="index.html">
+                <a routerLink="/">
                     <img src="./assets/img/header-logo.png" alt="">
                 </a> <!-- end .logo -->
             </div>
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <a href="#" id="mobile-menu-toggle"><span></span></a>
+        <a  routerLink="/" id="mobile-menu-toggle"><span></span></a>
 
         <!-- Primary Nav -->
-        <nav>
+        <nav *ngIf="isUserLoggedIn">
             <ul class="primary-nav">
                 <li routerLinkActive="active">
                     <a routerLink="/">Home</a>
                 </li>
-                <li routerLinkActive="active">
-                    <a routerLink="/annonces">Annonces</a>
-                </li>
-                <li *ngIf="isUserLoggedIn" class="has-submenu">
+                <li *ngIf="isUserLoggedIn" class="has-submenu" routerLinkActive="active">
                     <a routerLinkActive="active">Mes questionnaires</a>
                     <ul>
-                        <li><a routerLinkActive="active" [routerLink]="['/questionnaires','EnAttente']">questionnaires a répondre</a></li>
-                        <li><a routerLinkActive="active" [routerLink]="['/questionnaires','Repondus']">questionnaires répondus</a></li>
+                        <li routerLinkActive="active"><a  [routerLink]="['/questionnaires','EnAttente']">questionnaires a répondre</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/questionnaires','Repondus']">questionnaires répondus</a></li>
                     </ul>
                 </li>
-                <li *ngIf="isUserLoggedIn" class="has-submenu">
+                <li *ngIf="isUserLoggedIn" class="has-submenu" routerLinkActive="active">
                     <a routerLinkActive="active">Mes Demandes</a>
                     <ul>
-                        <li><a routerLinkActive="active" [routerLink]="['/demandes','acceptedDmD']">Demandes acceptées</a></li>
-                        <li><a routerLinkActive="active" [routerLink]="['/demandes','pendingDmD']">Demandes en attentes</a></li>
-                        <li><a routerLinkActive="active" [routerLink]="['/demandes','rejectedDmD']">Demande refusées</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/demandes','acceptedDmD']">Demandes acceptées</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/demandes','pendingDmD']">Demandes en attentes</a></li>
+                        <li routerLinkActive="active"><a [routerLink]="['/demandes','rejectedDmD']">Demande refusées</a></li>
                     </ul>
                 </li>
-                <li class="has-submenu">
-                    <a href="about-us.html">About Us</a>
-                    <ul>
-                        <li><a href="partners.html">Partners</a></li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
-                    </ul>
-                </li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="shortcodes.html">Shortcodes</a></li>
             </ul>
         </nav>
     </div> <!-- end .container -->

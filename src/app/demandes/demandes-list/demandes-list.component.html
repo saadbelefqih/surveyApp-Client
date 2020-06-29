@@ -1,4 +1,6 @@
-<h6>Demandes {{typeDemande}}</h6>
+<h6 *ngIf="typeDemande=='acceptedDmD'">Les demandes acceptées</h6>
+<h6 *ngIf="typeDemande=='pendingDmD'">Les demandes en attentes</h6>
+<h6 *ngIf="typeDemande=='rejectedDmD'">Les demandes rejetées</h6>
 <div  *ngIf="demandes">
     
     <table datatable class="table hover stripe"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >

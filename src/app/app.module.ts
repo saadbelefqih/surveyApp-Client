@@ -16,7 +16,6 @@ import { PageTitleComponent } from './layout/header/page-title/page-title.compon
 import { FooterComponent } from './layout/footer/footer.component';
 import { AnnoncesListComponent } from './annonces/annonces-list/annonces-list.component';
 import { AnnoncesDetailsComponent } from './annonces/annonces-details/annonces-details.component';
-import { HomeComponent } from './home/home.component';
 import { NoPageFoundComponent } from './no-page-found/no-page-found.component';
 import { LoginComponent } from './login/login.component';
 import { AuthHtppInterceptorServiceService } from './services/auth-htpp-interceptor-service.service';
@@ -24,6 +23,10 @@ import { DemandesListComponent } from './demandes/demandes-list/demandes-list.co
 import { QuestionnairesListComponent } from './questionnaires/questionnaires-list/questionnaires-list.component';
 import { QuestionnaireComponent } from './questionnaires/questionnaire/questionnaire.component';
 import { CreateParticipantComponent } from './participant/create-participant/create-participant.component';
+import { ForgetPasswordComponent } from './participant/forget-password/forget-password.component';
+import { ViewParticipantComponent } from './participant/view-participant/view-participant.component';
+import { UpdateParticipantComponent } from './participant/update-participant/update-participant.component';
+import { SecurePipePipe } from './shared/pipes/secure-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -37,13 +40,16 @@ import { CreateParticipantComponent } from './participant/create-participant/cre
     FooterComponent,
     AnnoncesListComponent,
     AnnoncesDetailsComponent,
-    HomeComponent,
     NoPageFoundComponent,
     LoginComponent,
     DemandesListComponent,
     QuestionnairesListComponent,
     QuestionnaireComponent,
-    CreateParticipantComponent
+    CreateParticipantComponent,
+    ForgetPasswordComponent,
+    ViewParticipantComponent,
+    UpdateParticipantComponent,
+    SecurePipePipe
   ],
   imports: [
     BrowserModule,

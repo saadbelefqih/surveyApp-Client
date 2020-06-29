@@ -1,11 +1,11 @@
 <div class="header-top-bar">
     <div class="container">
         <!-- Bookmarks -->
-        <a *ngIf="isUserLoggedIn" class="btn btn-link bookmarks" >Bonjour {{currentUser}}</a>
+        <a *ngIf="isUserLoggedIn" [routerLink]="['/profile']" routerLinkActive="active" class="btn btn-link bookmarks" >Bonjour {{currentUser}}</a>
 
         <!-- Header Register -->
         <div class="header-register">
-            <a *ngIf="!isUserLoggedIn" class="btn btn-link">S'inscrire</a>
+            <a *ngIf="!isUserLoggedIn" [routerLink]="['/singup']" routerLinkActive="active" class="btn btn-link">S'inscrire</a>
         </div> <!-- end .header-register -->
 
         <!-- Header Login -->

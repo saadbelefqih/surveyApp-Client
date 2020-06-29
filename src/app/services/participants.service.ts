@@ -14,6 +14,7 @@ export class ParticipantsService {
 getParticipant(username:string){
   return this.http.get<any>(this.url+"/getParticipant/"+username);}
 
+
 postDemandeParticipation(idannonce:Number,userId:Number){
   return this.http.post<any>(this.url+"/demandeParticipation",{"idParticipant":userId,"idAnnonce":idannonce})}
 
@@ -35,6 +36,8 @@ getQuestionnairesAll(userId:Number){
 saveAnswer(userId:Number,reponse:Reponse){
     return this.http.post<any>(this.url+"/getQuestionnaires/saveAnswer/"+userId,reponse);}
 
+ressetPassword(username,email){
+  return this.http.post<any>("http://localhost:4949/ressetPassword/Participant",{"username":username,"email":email});}
 
 
 }

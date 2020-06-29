@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
             timer: 2500
           }).then(()=>{
             this.dataSharingService.isUserLoggedIn.next(true);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
           })
           },error=>{
             this.authenticationService.logOut();

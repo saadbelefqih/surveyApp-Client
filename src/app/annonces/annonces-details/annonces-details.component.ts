@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AnnoncesService } from 'src/app/services/annonces.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ParticipantsService } from 'src/app/services/participants.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'annonces-details',
@@ -13,20 +14,25 @@ import { ParticipantsService } from 'src/app/services/participants.service';
 export class AnnoncesDetailsComponent implements OnInit {
   idAnnonce:Number=null;
   annonce:any;
+  url;
+  baseUrl:string = 'https://www.youtube.com/embed/';
   constructor(private annoncesService:AnnoncesService,
     private PartcipantService:ParticipantsService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-    private authenticationService:AuthenticationService) { }
+    private authenticationService:AuthenticationService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
     this.getParamId();
     this.getOneAnnonce(this.idAnnonce);
+    
   }
 
   getOneAnnonce(id:Number){
     this.annoncesService.getOneByID(this.idAnnonce).subscribe((annonce:any)=>{
       this.annonce=annonce;
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + this.annonce.urlVideoAnnonce);
     })
   }
 

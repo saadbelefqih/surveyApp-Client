@@ -50,23 +50,16 @@
             <li><strong>Dernier date de participation:</strong> {{annonce?.dateFinPublication | date:'dd-MM-yyyy'}}</li>
         </ul>
 
-        <div class="fitvidsjs">
-            <youtube-player 
-                videoId="SgZ7pVb_lb0&list=RD8_peZd1cArw&index=5" 
-                suggestedQuality="highres" 
-                [height]="281" 
-                [width]="500" 
-                [startSeconds]="'4'"
-                [endSeconds]="8">
-                </youtube-player>
+        <div class="fitvidsjs" *ngIf="annonce?.urlVideoAnnonce">
+            <iframe [src]="url" width="100%" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
-
+        <div *ngIf="annonce?.publicsCible">
         <h5>public Cible</h5>
 
         <ul *ngFor="let pc of annonce?.publicsCible" class="additional-requirements clearfix" >
             <li >{{pc.libelle}}</li>
         </ul>
-
+    </div>
         <hr>
 
         <div class="clearfix">

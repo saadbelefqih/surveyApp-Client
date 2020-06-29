@@ -1,4 +1,5 @@
-<h6>Questionnaires {{typeQuestionnaire}}</h6>
+<h6 *ngIf="typeQuestionnaire=='EnAttente'">Les Questionnaires attentent votre réponse</h6>
+<h6 *ngIf="typeQuestionnaire=='Repondus'">Les Questionnaires répondus</h6>
 <div  *ngIf="questionnaires">
     
     <table datatable class="table hover stripe display"  [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >

@@ -36,7 +36,6 @@ export class AuthHtppInterceptorServiceService implements HttpInterceptor{
         console.log(`HTTP Error: ${req.url}`);
         return throwError(error);
       }),
-
       // PROFILING
       finalize(() => {
         const profilingMsg = `${req.method} "${req.urlWithParams}"`;

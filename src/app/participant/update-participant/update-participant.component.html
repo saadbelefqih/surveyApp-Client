@@ -1,14 +1,14 @@
-<div id="page-content">
+<div id="page-content" 
+*ngIf="professions && villes && participant">
     <div class="container">
         <div class="row">
             <div 
-                class="white-container sign-up-form"
-                *ngIf="professions && villes">
+                class="white-container sign-up-form">
                 <form #participantForm="ngForm"
-                        (ngSubmit)="participantForm.form.valid && !existUserName && onSubmit()"
+                        (ngSubmit)="participantForm.form.valid && onSubmit()"
                         novalidate>
                     <div>
-                        <h2>Devenir un Participant</h2>
+                        <h2>Modifier vos données</h2>
     
                         <section>
                             <h6 class="bottom-line">Vous ETES:</h6>
@@ -147,8 +147,6 @@
                                 </div>
                             </div>
     
-                            
-    
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h6 class="label">Adresse</h6>
@@ -194,25 +192,9 @@
                                             [(ngModel)]="participant.username"
                                             name="username"
                                             #username="ngModel"
-                                            (blur)="userNameCheckUnique(username.value)"
-                                            [ngClass]="{ 'is-invalid': participantForm.submitted && username.invalid }"
-                                            required
-                                            minlength="4"
-                                            maxlength="20" 
                                             type="text"
-                                            class="form-control"
-                                            placeholder="NOM UTILISATEUR">
-                                            
-                                            <span 
-                                                *ngIf="participantForm.submitted && username?.invalid || existUserName "
-                                                class="alertInput">
-                                                    <span *ngIf="username.errors?.required">
-                                                            Ce champ est Obligatoire</span>
-                                                    <span *ngIf="username.errors?.minlength">
-                                                            Nombre de Caractaire requis est  {{username.errors?.minlength?.actualLength}} \ {{username.errors?.minlength?.requiredLength}}</span>
-                                                    <span *ngIf="existUserName">
-                                                            ce nom d'utilisateur existe déjà</span>
-                                            </span>
+                                            disabled="disabled"
+                                            class="form-control ">
                                 </div>
                                 <div class="col-sm-8">
                                     <h6 class="label">Mot de passe</h6>

@@ -1,0 +1,129 @@
+<div id="page-content" *ngIf="participant">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 page-sidebar">
+                <aside>
+                    <div class="widget sidebar-widget white-container candidates-single-widget">
+                        <div class="widget-content">
+                            <div class="thumb">
+                                <span *ngIf="participant?.hasImage==null || !participant?.hasImage">
+                                    <img src="./assets/img/participant.png">
+                                </span>
+                                <span *ngIf="participant?.hasImage">
+                                    <img [attr.src]="'http://localhost:4949/getPhoto/' + participant.id+'?ts='+ timeStamp| securePipe | async">
+                                </span>
+                            </div>
+
+                            <h5 class="bottom-line">Participant Détails</h5>
+
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Nom</td>
+                                        <td><span *ngIf="participant?.genre"> M.</span>
+                                            <span *ngIf="!participant?.genre"> Mme</span>
+                                            <span>{{participant?.nom}}&nbsp;</span>
+                                            <span>{{participant?.prenom}}</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>UserName</td>
+                                        <td>{{participant?.username}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Age</td>
+                                        <td>{{age}} ans</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Télephone</td>
+                                        <td>{{participant?.tel}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>{{participant?.email}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Adresse</td>
+                                        <td>{{participant?.adresse}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Ville</td>
+                                        <td>{{participant?.ville?.libelleVille}}</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Profession</td>
+                                        <td>{{participant?.profession?.libelleProfession}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+
+                            <h5 class="bottom-line"></h5>
+                            <div class="clearfix title-lines">
+                                    <div>
+
+                                        <a *ngIf="!activeImport"  (click)="activerBtnLoad()" class="btn btn-default "><i class="fa fa-upload" aria-hidden="true"></i>Changer Photo</a>
+                                          <div *ngIf="activeImport">
+                                            <button   class="btn  btn-default" (click)="uploadPhoto()"><i class="fa fa-upload" aria-hidden="true" ></i>Importer</button>
+                                            <input type="file" (change)="onSelectImage($event)">
+                                            <div  class="progress">
+                                                <div
+                                                  class="progress-bar progress-bar-info progress-bar-striped"
+                                                  role="progressbar"
+                                                  attr.aria-valuenow="{{ progressLoading }}"
+                                                  aria-valuemin="0"
+                                                  aria-valuemax="100"
+                                                  [ngStyle]="{ width: progressLoading + '%' }"
+                                                >
+                                                  {{ progressLoading }}%
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <h5 class="bottom-line"></h5>
+                            <div class="clearfix title-lines"> 
+                                    <div>
+                                        <a  class="btn btn-default " routerLinkActive="active" [routerLink]="['/profile/update']"><i class="fa fa-pencil-square-o" aria-hidden="true">Modifier Profile</i></a>
+                                    </div>
+                        </div>
+                            
+                        </div>
+                    </div>
+                </aside>
+            </div> <!-- end .page-sidebar -->
+            <div class="col-sm-8 page-content">
+
+                <div class="candidates-item candidates-single-item">
+                    <h3>Votre participation</h3>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="animated-counter btn-default ">
+                                <i class="fa fa-comments-o"></i>
+                                <span>{{participant?.nbParticipantAuConsours}}</span>
+                                <h3>Demandes</h3>
+                            </div>
+                        </div>
+        
+
+        
+                        <div class="col-sm-6">
+                            <div class="animated-counter btn-brown" data-number="999999">
+                                <i class="fa fa-lightbulb-o"></i>
+                                <span>{{participant?.nbQuestionnaireRepondus}}</span>
+                                <h3>Questionnaire</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- end .page-content -->
+
+        </div>
