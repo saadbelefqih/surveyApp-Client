@@ -69,7 +69,11 @@
     </div>
     <div *ngIf="annoncesList" >
         <div class="jobs-item with-thumb" *ngFor="let annonce of annoncesList">
-            <div class="thumb"><img src="./assets/img/annoncesDetails.jpg" alt="Annonce"></div>
+            <div class="thumb" height="57px;" width="80px;">
+                <img *ngIf="!annonce?.hasPicture" src="./assets/img/annoncesDetails.jpg" alt="Annonce">
+                
+                <img *ngIf="annonce?.hasPicture" [attr.src]="'http://localhost:4949/api/annonces/getPhoto/' + annonce.id | securePipe | async" style="height: 57px !important;"width="80px;">
+            </div>
             <div class="clearfix visible-xs"></div>
             <div class="date">{{annonce.dateDebutPublication | date:'dd'}} <span>{{annonce.dateDebutPublication | date:'yyyy-MM'}}</span></div>
             <h6 class="title"><a (click)="onRedirect(annonce.id)" >{{annonce.libelle}}</a></h6>

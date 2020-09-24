@@ -3,7 +3,8 @@
         <div class="widget sidebar-widget white-container candidates-single-widget">
             <div class="widget-content">
                 <div id="jobs-single-page-map" class="white-container">
-                    <img src="./assets/img/annoncesDetails.jpg">
+                    <img *ngIf="!annonce?.hasPicture" src="./assets/img/annoncesDetails.jpg" alt="Annonce">
+                    <img *ngIf="annonce?.hasPicture" [attr.src]="'http://localhost:4949/api/annonces/getPhoto/' + annonce.id | securePipe | async" style="height: 290px !important;">
                 </div>
                 <h5 class="bottom-line">Détails Annonce</h5>
                 <table>
@@ -24,8 +25,8 @@
                         </tr>
 
                         <tr>
-                            <td>Nombre participant demandé</td>
-                            <td>{{annonce?.nbParticipantDemander}}</td>
+                            <td>Effectif demandé</td>
+                            <td>{{annonce?.nbParticipantTheorique}}</td>
                         </tr>
 
                     </tbody>
